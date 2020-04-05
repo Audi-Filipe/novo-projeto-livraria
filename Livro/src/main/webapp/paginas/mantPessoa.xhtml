@@ -1,0 +1,118 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+	<h:form id="form">
+	<p:messages id="messages" showDetail="true" closable="true">
+        <p:autoUpdate />
+    </p:messages>
+		<p:panelGrid style="width: 50%">
+				
+			<p:row>
+				<p:column style="width:40px">
+					<h:outputLabel value="Nome: " />
+				</p:column>
+				<p:column colspan="2" style="width:400px">
+					<p:inputText value="#{PessoaBean.usuario.nome}"/>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column style="width:40px">
+					<h:outputLabel value="CPF: " />
+				</p:column>
+				<p:column colspan="2" style="width:400px">
+					<p:inputText value="#{PessoaBean.usuario.cpf}" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column style="width:40px">
+					<h:outputLabel value="Idade: " />
+				</p:column>
+				<p:column colspan="2" style="width:400px">
+					<p:password value="#{PessoaBean.usuario.idade}"/>
+				</p:column>
+			</p:row>
+						
+						<p:row>
+				<p:column style="width:40px">
+					<h:outputLabel value="Senha: " />
+				</p:column>
+				<p:column colspan="2" style="width:400px">
+					<p:password value="#{PessoaBean.usuario.senha}"/>
+				</p:column>
+			</p:row>
+			<p:row>
+			<p:column style="width:40px">
+					<h:outputLabel value="Sexo: " />
+				</p:column>
+					<p:column colspan="2" style="width:400px">
+							<p:selectOneMenu style="width:140px" value="#{PessoaBean.usuario.sexo}">
+							
+								<f:selectItem itemLabel="Masculino" itemValue="MASCULINO" />
+								<f:selectItem itemLabel="Feminino" itemValue="FEMININO" />
+								</p:selectOneMenu>
+										</p:column>
+			</p:row>
+					
+			
+			
+			<p:row>
+				<p:column colspan="4">
+					<p:panel header="Livros">
+						<p:panelGrid columns="7">
+							<h:outputLabel value="Nome: " />
+							<p:inputText size="10" value="#{PessoaBean.livro.nome}"/>
+							<h:outputLabel value="Autor: " />
+							<p:inputText size="10" value="#{PessoaBean.livro.autor}"/>
+							
+							<h:outputLabel value="Ano Lançamento: " />
+							<p:inputText size="10" value="#{PessoaBean.livro.ano_lancamento}"/>
+						
+							<p:commandButton value="Adicionar" update="livros"  
+								actionListener="#{PessoaBean.adicionarLivro}" />
+						</p:panelGrid>
+						<p:dataTable id="livros" var="livro" value="#{PessoaBean.usuario.livros}">
+						
+						
+							<p:column headerText="Nome">
+								<h:outputText value="#{livro.nome}" />
+							</p:column>
+							<p:column headerText="Autor">
+								<h:outputText value="#{livro.autor}" />
+							</p:column>
+							<p:column headerText="Ano Lançamento">
+								<h:outputText value="#{livro.ano_lancamento}" />
+							</p:column>
+						</p:dataTable>
+					</p:panel>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column colspan="2">
+					<p:commandButton value="Salvar" update="@form" 
+						actionListener="#{PessoaBean.salvar}"/>
+				</p:column>
+				
+				
+				<p:column>
+					<p:commandButton value="Limpar" update="@form" 
+					actionListener="#{PessoaBean.limpar}">
+					
+		              
+		            </p:commandButton>
+				</p:column>
+				
+				
+				<p:column>
+			<p:commandButton id="comeBack" value="Voltar" action="#{PessoaBean.voltar}" />
+				</p:column>
+			</p:row>
+		</p:panelGrid>
+	</h:form>
+</h:body>
+</html>

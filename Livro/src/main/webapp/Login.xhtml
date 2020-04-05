@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Livraria</title>
+</h:head>
+
+
+<h:body styleClass="Bimage">
+
+	<h:form>
+	<style>
+    .Bimage{background-image:url("imagem/login.png")}
+</style>
+		
+		<p:dialog header="Livraria Sefaz" modal="true" height="150"
+			visible="true" >
+			<p:panelGrid columns="2">
+				<h:outputLabel value="Usuario :" />
+				<p:inputText value="#{EntrarBean.usuarioTXT}" />
+				<h:outputLabel value="Senha :" />
+				<p:inputText value="#{EntrarBean.senhaTXT}" />
+				<p:commandButton value="Entrar" update="@form"
+					actionListener="#{EntrarBean.entrar}" />
+				<h:outputLabel value="#{EntrarBean.mensagem}" style="color: red" />
+
+			
+			</p:panelGrid>
+		</p:dialog>
+	</h:form>
+</h:body>
+</html>
